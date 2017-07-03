@@ -1,0 +1,13 @@
+<div class="side-bar" [class.side-bar-hidden]="sideBarToggle">
+    <div (click)="sideBarToggle=!sideBarToggle">
+        <div *ngIf="sideBarToggle; else hideBar">
+            <i class="fa fa-arrow-right"></i>
+        </div>
+        <ng-template #hideBar>
+            <i class="fa fa-arrow-left"></i>
+        </ng-template>
+    </div>
+</div>
+<div class="content">
+    <router-outlet></router-outlet>
+</div>
