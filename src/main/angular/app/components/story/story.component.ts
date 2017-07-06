@@ -11,23 +11,30 @@ import { Observable, BehaviorSubject } from "rxjs";
 })
 export class StoryComponent implements OnInit {
 
-  storyStream: Observable<Story>;
-  storyTextStream: BehaviorSubject<string> = new BehaviorSubject('');
+  storiesStream: Observable<Story[]>;
+  storyTextStream: Story[] = [];
 
   constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
-    this.storyStream = this.store.select('story');
-    this.storyStream.subscribe(
-      story => {
-        if (story)
-          this.storyTextStream.next(story.text)
+    this.storiesStream = this.store.select('stories');
+    this.storiesStream.subscribe(
+      stories => {
+        if (stories)
+          this.storyTextStream = stories;
       }
     );
   }
 
-  updateStory() {
-    this.storyTextStream.next("<h1>test</h1>");
+  updateStory(index: number) {
+    this.storyTextStream[index].text = "<h1>test</h1>";
+  }
+
+  addStory() {
+    let newStory = new Story();
+    newStory.text ="";
+    newStory.open = true;
+    this.storyTextStream.push(newStory);
   }
 
 }

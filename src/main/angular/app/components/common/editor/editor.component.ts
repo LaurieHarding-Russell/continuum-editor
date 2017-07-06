@@ -7,23 +7,33 @@ import 'tinymce/themes/modern';
 
 declare var tinymce: any;
 
+var tinymceIdGlobal = 0;
+
 @Component({
   selector: 'editor',
   templateUrl: './editor.component.html',
   styleUrls: ['./editor.component.scss']
 })
-export class EditorComponent implements AfterViewInit, OnDestroy {
+export class EditorComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  @Input() value: Observable<String>;
+
+  @Input() value: String;
   @Output() onEditorContentChange = new EventEmitter();
 
   editor;
+  tinymceId : string;
 
-  constructor() { }
+  constructor() { 
+  }
+
+  ngOnInit(){
+    this.tinymceId = "tinymce" + tinymceIdGlobal;
+    tinymceIdGlobal++;
+  }
 
   ngAfterViewInit() {
     tinymce.init({
-      selector: '#tinymce',
+      selector: '#' + this.tinymceId,
       plugins: [''],
       skin_url: './assets/lightgray',
       setup: editor => {
@@ -34,11 +44,7 @@ export class EditorComponent implements AfterViewInit, OnDestroy {
         });
         editor.on("init",
           ()=> {
-            this.value.subscribe(
-              text => {
-                editor.setContent(text);
-              }
-            )
+            editor.setContent(this.value);
           }
         );
       }

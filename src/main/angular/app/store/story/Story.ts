@@ -1,3 +1,4 @@
 export class Story {
-    text : string
+    text : string;
+    open : boolean;
 }

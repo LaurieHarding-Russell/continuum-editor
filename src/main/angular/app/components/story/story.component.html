@@ -1,8 +1,11 @@
-<div class="story-list"> 
-  <editor [value]="storyTextStream"></editor>
-  <div>
-    <button class="btn" (click)="updateStory()"> Save</button> 
+<div *ngFor="let story of storyTextStream" class="story-list"> 
+  <div class="story-container">
+    <editor [value]="story.text" [class.hide-story]="story.open"></editor>
   </div>
-</div>
+  <div class="story-controls">
+    <button class="btn" (click)="updateStory()"> Save</button> 
+    <button class="btn" (click)="story.open=!story.open"> {{ story.open ? 'Show' : 'Hide'}} </button> 
+  </div>
+</div> 
 
-<button class="btn"> New Story </button> 
+<button class="btn" (click)="addStory()"> New Story </button> 
