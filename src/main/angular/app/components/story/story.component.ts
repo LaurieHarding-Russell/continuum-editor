@@ -1,11 +1,8 @@
+import { AppState } from './../../store/application-state';
 import { Story } from './../../store/story/Story';
 import { Component, OnInit } from '@angular/core';
 import { Store } from "@ngrx/store";
 import { Observable, BehaviorSubject } from "rxjs";
-
-interface AppState {
-  story: Story;
-}
 
 @Component({
   selector: 'app-story',

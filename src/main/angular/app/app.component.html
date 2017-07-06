@@ -7,6 +7,26 @@
             <i class="fa fa-arrow-left"></i>
         </ng-template>
     </div>
+
+    <div [routerLink]="['story']">
+        <a>Story</a>
+        <i class="fa fa-book"></i>
+    </div>
+
+    <div [routerLink]="['characters-list']">
+        <a>Characters</a>
+        <i class="fa fa-user-circle-o"></i>
+    </div>
+
+    <div [routerLink]="['events-list']">
+        <a>Event</a>
+        <i class="fa fa-calendar-o"></i>
+    </div>
+
+    <div [routerLink]="['location-list']">
+        <a>Location</a>
+        <i class="fa fa-globe"></i>
+    </div>
 </div>
 <div class="content">
     <router-outlet></router-outlet>

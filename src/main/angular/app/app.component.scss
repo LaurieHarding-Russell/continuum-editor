@@ -20,7 +20,19 @@
     font-size: 24px;
     color: #20281c;
 
+    cursor: pointer;
+
     transition: all 0.5s;
+}
+
+.side-bar a {
+    color: #20281c;
+    webkit-tap-highlight-color: none;
+}
+
+.side-bar div:focus {
+    // outline: none auto 5px;
+    outline: rgba(0,0,0,0) auto 5px;
 }
 
 .side-bar-hidden {

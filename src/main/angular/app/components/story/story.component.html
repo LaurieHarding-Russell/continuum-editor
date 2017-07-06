@@ -1,7 +1,8 @@
-
-<!--<textarea [value]="story.text" (change)="updateStory($event)"-->
-<editor [value]="storyTextStream"></editor>
-<div> 
-  <button class="btn" (click)="updateStory()"> Save</button> 
-  <button class="btn"> Exit</button> 
+<div class="story-list"> 
+  <editor [value]="storyTextStream"></editor>
+  <div>
+    <button class="btn" (click)="updateStory()"> Save</button> 
+  </div>
 </div>
+
+<button class="btn"> New Story </button> 
