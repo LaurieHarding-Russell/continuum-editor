@@ -1,4 +1,4 @@
-export class WorldLocation {
+export class Location {
     latitude: number;
     longitude: number;
 }

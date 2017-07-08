@@ -1,4 +1,4 @@
-<div *ngFor="let story of storyTextStream" class="story-list"> 
+<div *ngFor="let story of stories" class="story-list"> 
   <div class="story-container">
     <editor [value]="story.text" [class.hide-story]="story.open"></editor>
   </div>

@@ -1,6 +1,6 @@
-import { WorldLocation } from './../../model/WorldLocation';
+import { Location } from './../../model/Location';
 export class StoryEvent {
     name: string;
     description: string;
-    location: WorldLocation;
+    location: Location;
 }

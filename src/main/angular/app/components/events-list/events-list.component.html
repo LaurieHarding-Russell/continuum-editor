@@ -1,3 +1,10 @@
-<p>
-  events-list works!
-</p>
+<div *ngFor="let event of events">
+  <input [value]="event.name"/>
+  <input [value]="event.description"/>
+  <!--{{event.location}}-->
+  <i class="fa fa-times" (click)="removeEvent()"></i>
+</div>
+
+<div>
+  <button class="btn" (click)="addEvent()"> add </button> 
+</div>

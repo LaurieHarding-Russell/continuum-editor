@@ -12,7 +12,7 @@ import { Observable, BehaviorSubject } from "rxjs";
 export class StoryComponent implements OnInit {
 
   storiesStream: Observable<Story[]>;
-  storyTextStream: Story[] = [];
+  stories: Story[] = [];
 
   constructor(private store: Store<AppState>) { }
 
@@ -21,20 +21,20 @@ export class StoryComponent implements OnInit {
     this.storiesStream.subscribe(
       stories => {
         if (stories)
-          this.storyTextStream = stories;
+          this.stories = stories;
       }
     );
   }
 
   updateStory(index: number) {
-    this.storyTextStream[index].text = "<h1>test</h1>";
+    this.stories[index].text = "<h1>test</h1>";
   }
 
   addStory() {
     let newStory = new Story();
     newStory.text ="";
     newStory.open = true;
-    this.storyTextStream.push(newStory);
+    this.stories.push(newStory);
   }
 
 }
