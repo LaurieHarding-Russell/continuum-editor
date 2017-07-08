@@ -1,0 +1,36 @@
+.event-item-container {
+    background: #eee;
+    padding: 15px;
+    margin: 15px;
+    position: relative;
+
+    box-shadow: 0 0 5px #aaa
+}
+
+.event-item-container input {
+    display: block;
+}
+
+.remove {
+    display: inline-block;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    cursor: pointer;
+}
+
+.remove:before {
+    content: "\F00D";
+}
+
+.button-container {
+
+}

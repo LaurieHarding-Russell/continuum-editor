@@ -3,6 +3,13 @@
     height: 100%;
     width: 100%;    
 }
+
+.universe-name {
+    font-size: 24px;
+    margin: 10px 0;
+    border: none;
+}
+
 .side-bar {
     position: absolute;
     display: inline-block;
@@ -31,7 +38,6 @@
 }
 
 .side-bar div:focus {
-    // outline: none auto 5px;
     outline: rgba(0,0,0,0) auto 5px;
 }
 
@@ -41,4 +47,9 @@
 
 .content {
     margin: 10px 160px;
+    transition: margin 0.5s;
+}
+
+.content-full {
+    margin: 10px 50px;
 }

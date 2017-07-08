@@ -1,10 +1,10 @@
-<div *ngFor="let event of events">
-  <input [value]="event.name"/>
-  <input [value]="event.description"/>
+<div *ngFor="let event of events; let i=index" class="event-item-container">
+  <input [value]="event.name" placeholder="Name"/>
+  <input [value]="event.description" placeholder="Description"/>
   <!--{{event.location}}-->
-  <i class="fa fa-times" (click)="removeEvent()"></i>
+  <i class="remove" (click)="removeEvent(i)"></i>
 </div>
 
-<div>
+<div class="button-container">
   <button class="btn" (click)="addEvent()"> add </button> 
 </div>

@@ -28,6 +28,7 @@
         <i class="fa fa-globe"></i>
     </div>
 </div>
-<div class="content">
+<div class="content" [class.content-full]="sideBarToggle">
+    <input class="universe-name" placeholder="Universe Name"/>
     <router-outlet></router-outlet>
 </div>

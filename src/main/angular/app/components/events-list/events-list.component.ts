@@ -1,4 +1,4 @@
-import { ADD_STORY_EVENT } from './../../store/storyEvent/StoryEvent.reducer';
+import { ADD_STORY_EVENT, REMOVE_STORY_EVENT } from './../../store/storyEvent/StoryEvent.reducer';
 import { StoryEvent } from './../../store/storyEvent/StoryEvent';
 import { AppState } from './../../store/application-state';
 import { Store } from '@ngrx/store';
@@ -32,8 +32,9 @@ export class EventsListComponent implements OnInit {
     this.store.dispatch({type: ADD_STORY_EVENT });
   }
 
-  removeEvent() {
-    
+  removeEvent(index: number) {
+    console.log(index);
+    this.store.dispatch({type: REMOVE_STORY_EVENT, payload: index });
   }
 
 }
