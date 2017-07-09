@@ -33,7 +33,6 @@ export class EventsListComponent implements OnInit {
   }
 
   removeEvent(index: number) {
-    console.log(index);
     this.store.dispatch({type: REMOVE_STORY_EVENT, payload: index });
   }
 

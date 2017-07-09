@@ -13,7 +13,7 @@ import { CharactersListComponent } from './components/characters-list/characters
 import { LocationsListComponent } from './components/locations-list/locations-list.component';
 
 import { storyEventReducer } from "./store/storyEvent/StoryEvent.reducer";
-import { storyReducer } from "./store/story/Story.reducer";
+import { storiesReducer } from "./store/story/Stories.reducer";
 
 
 @NgModule({
@@ -29,7 +29,7 @@ import { storyReducer } from "./store/story/Story.reducer";
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    StoreModule.provideStore({stories :storyReducer, storyEvents: storyEventReducer})
+    StoreModule.provideStore({stories :storiesReducer, storyEvents: storyEventReducer})
   ],
   providers: [],
   bootstrap: [AppComponent]

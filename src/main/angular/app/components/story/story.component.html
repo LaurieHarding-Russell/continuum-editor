@@ -1,11 +1,13 @@
-<div *ngFor="let story of stories" class="story-list"> 
+<div *ngFor="let story of stories; let i = index" class="story-list"> 
   <div class="story-container">
-    <editor [value]="story.text" [class.hide-story]="story.open"></editor>
+    <editor [value]="story.text" [class.hide-story]="!story.open" (change)="upgradeStory($event, i)"></editor>
   </div>
   <div class="story-controls">
     <button class="btn" (click)="updateStory()"> Save</button> 
-    <button class="btn" (click)="story.open=!story.open"> {{ story.open ? 'Show' : 'Hide'}} </button> 
+    <button class="btn" (click)="story.open=!story.open"> {{ story.open ? 'Hide': 'Show'}} </button> 
   </div>
-</div> 
+</div>
 
-<button class="btn" (click)="addStory()"> New Story </button> 
+<div class="button-container">
+  <button class="btn" (click)="addStory()"> New Story </button> 
+</div>

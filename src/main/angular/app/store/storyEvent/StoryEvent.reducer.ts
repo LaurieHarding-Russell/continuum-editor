@@ -14,7 +14,6 @@ export function storyEventReducer(state: List<StoryEvent> = List([]), action: Ac
 			return state.push(event);
 
 		case REMOVE_STORY_EVENT:
-			console.log("asdf", action);
 			return state.remove(action.payload);
 
 		default:

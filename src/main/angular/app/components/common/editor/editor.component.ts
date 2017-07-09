@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 import { Component, OnInit, AfterViewInit, OnDestroy, Input, Output } from '@angular/core';
-import { EventEmitter } from "events";
+import {EventEmitter} from '@angular/core';
 
 import 'tinymce';
 import 'tinymce/themes/modern';
@@ -18,7 +18,7 @@ export class EditorComponent implements OnInit, AfterViewInit, OnDestroy {
 
 
   @Input() value: String;
-  @Output() onEditorContentChange = new EventEmitter();
+  @Output() change = new EventEmitter();
 
   editor;
   tinymceId : string;
@@ -40,7 +40,7 @@ export class EditorComponent implements OnInit, AfterViewInit, OnDestroy {
         this.editor = editor;
         editor.on('keyup change', () => {
           const content = editor.getContent();
-          this.onEditorContentChange.emit(content);
+          this.change.emit(content);
         });
         editor.on("init",
           ()=> {
