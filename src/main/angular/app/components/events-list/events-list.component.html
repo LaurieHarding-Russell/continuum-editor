@@ -1,6 +1,6 @@
 <div *ngFor="let event of events; let i=index" class="event-item-container">
-  <input [value]="event.name" placeholder="Name"/>
-  <input [value]="event.description" placeholder="Description"/>
+  <input [ngModel]="event.name" placeholder="Name" (change)="updateEventName($event, i)"/>
+  <input [ngModel]="event.description" placeholder="Description"/>
   <!--{{event.location}}-->
   <i class="remove" (click)="removeEvent(i)"></i>
 </div>

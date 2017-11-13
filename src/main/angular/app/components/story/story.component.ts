@@ -1,10 +1,9 @@
-import { ADD_STORY, UPDATE_STORY } from './../../store/story/Stories.reducer';
-import { List } from 'immutable';
-import { AppState } from './../../store/application-state';
-import { Story } from './../../store/story/Story';
+import { Story } from './../../model/Story';
 import { Component, OnInit } from '@angular/core';
-import { Store } from "@ngrx/store";
 import { Observable, BehaviorSubject } from "rxjs";
+import 'rxjs/add/operator/map'
+
+
 
 @Component({
   selector: 'app-story',
@@ -13,28 +12,18 @@ import { Observable, BehaviorSubject } from "rxjs";
 })
 export class StoryComponent implements OnInit {
 
-  storiesStream: Observable<List<Story>>;
-  stories: Story[] = [];
+  stories: Array<Story> = [];
 
-  constructor(private store: Store<AppState>) { }
+  constructor() { }
 
   ngOnInit() {
-    this.storiesStream = this.store.select('stories');
-    this.storiesStream.subscribe(
-      (stories: List<Story>) => {
-        if (stories) {
-          this.stories = stories.toArray();
-        }
-      }
-    );
+
   }
 
   addStory() {
-    this.store.dispatch({type: ADD_STORY});
+    let newStory = new Story();
+    newStory.open = true;
+    newStory.text = "";
+    this.stories.push(newStory);
   }
-
-  upgradeStory(text: string, index: number) {
-    this.store.dispatch({type: UPDATE_STORY, payload: {index: index, text: text}});
-  }
-
 }

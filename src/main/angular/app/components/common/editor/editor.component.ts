@@ -1,57 +1,43 @@
 import { Observable } from 'rxjs';
-import { Component, OnInit, AfterViewInit, OnDestroy, Input, Output } from '@angular/core';
-import {EventEmitter} from '@angular/core';
+import { Component, EventEmitter, OnInit, AfterViewInit, OnDestroy, Input, Output, OnChanges, ViewEncapsulation } from '@angular/core';
 
-import 'tinymce';
-import 'tinymce/themes/modern';
+import * as QuillNamespace from 'quill';
+let Quill: any = QuillNamespace;
 
-declare var tinymce: any;
-
-var tinymceIdGlobal = 0;
+var editorContainerIdGlobal = 0;
 
 @Component({
   selector: 'editor',
   templateUrl: './editor.component.html',
-  styleUrls: ['./editor.component.scss']
+  styleUrls: ['./editor.component.scss'],
+  encapsulation: ViewEncapsulation.None  
 })
-export class EditorComponent implements OnInit, AfterViewInit, OnDestroy {
-
+export class EditorComponent {
 
   @Input() value: String;
+
   @Output() change = new EventEmitter();
 
-  editor;
-  tinymceId : string;
+  editorContainer : string;
 
-  constructor() { 
-  }
-
-  ngOnInit(){
-    this.tinymceId = "tinymce" + tinymceIdGlobal;
-    tinymceIdGlobal++;
+  constructor() {
+    this.editorContainer = `editor-container` + editorContainerIdGlobal;
+    editorContainerIdGlobal++;
+    this.editorContainer = "editor-container";
   }
 
   ngAfterViewInit() {
-    tinymce.init({
-      selector: '#' + this.tinymceId,
-      plugins: [''],
-      skin_url: './assets/lightgray',
-      setup: editor => {
-        this.editor = editor;
-        editor.on('keyup change', () => {
-          const content = editor.getContent();
-          this.change.emit(content);
-        });
-        editor.on("init",
-          ()=> {
-            editor.setContent(this.value);
-          }
-        );
-      }
+    var quill = new Quill(`#${this.editorContainer}`, {
+      modules: {
+        toolbar: [
+          [{ header: [1, 2, false] }],
+          ['bold', 'italic', 'underline'],
+          []
+        ]
+      },
+      placeholder: 'Compose an epic...',
+      theme: 'snow'  // or 'bubble'
     });
   }
 
-  ngOnDestroy() {
-    tinymce.remove(this.editor);
-  }
 }

@@ -4,43 +4,38 @@ buildscript {
     }
     dependencies {
         classpath(
-                'org.springframework.boot:spring-boot-gradle-plugin:1.2.5.RELEASE',
+                'org.springframework.boot:spring-boot-gradle-plugin:1.5.8.RELEASE',
                 'org.unbroken-dome.gradle-plugins:gradle-testsets-plugin:1.0.2'
         )
     }
 }
- 
+
 apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'eclipse'
 apply plugin: 'org.unbroken-dome.test-sets'
-apply plugin: 'spring-boot'
- 
+apply plugin: 'org.springframework.boot'
+
+
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
- 
+
+mainClassName = "com.editor.WorldEditorApplication"
+
 repositories {
     mavenCentral()
-} 
+}
+
+testSets {
+    integrationTest { dirName = 'integration-test' }
+}
   
 dependencies {
     compile(
             'org.springframework.boot:spring-boot-starter-actuator',
             'org.springframework.boot:spring-boot-starter-thymeleaf',
-            'com.h2database:h2'
+            'com.h2database:h2',
+            'edu.stanford.nlp:stanford-corenlp:3.8.0',
+            'edu.stanford.nlp:stanford-corenlp:3.8.0:models'
     )
-    testCompile('org.springframework.boot:spring-boot-starter-test')
-}
- 
-testSets {
-    integrationTest { dirName = 'integration-test' }
-}
- 
-project.integrationTest {
-    outputs.upToDateWhen { false }
-}
- 
-check.dependsOn integrationTest
-integrationTest.mustRunAfter test
- 
-tasks.withType(Test) {
-    reports.html.destination = file("${reporting.baseDir}/${name}")
 }

@@ -1,0 +1,6 @@
+${AnsiBackground.GREEN}                      __  .__                            
+${AnsiBackground.GREEN}  ____  ____   _____/  |_|__| ____  __ __ __ __  _____  
+${AnsiBackground.GREEN}_/ ___\/  _ \ /    \   __\  |/    \|  |  \  |  \/     \ 
+${AnsiBackground.GREEN}\  \__(  <_> )   |  \  | |  |   |  \  |  /  |  /  Y Y  \
+${AnsiBackground.GREEN} \___  >____/|___|  /__| |__|___|  /____/|____/|__|_|  /
+${AnsiBackground.GREEN}     \/           \/             \/                  \/ 
